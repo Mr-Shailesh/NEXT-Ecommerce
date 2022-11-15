@@ -7,6 +7,7 @@ import {
   AiOutlineMinusCircle,
 } from "react-icons/ai";
 import { BsFillBagCheckFill } from "react-icons/bs";
+import { MdAccountCircle } from "react-icons/md";
 
 const Navbar = ({ addToCart, removeFromCart, cart, subTotal, clearCart }) => {
   const ref = useRef();
@@ -51,16 +52,22 @@ const Navbar = ({ addToCart, removeFromCart, cart, subTotal, clearCart }) => {
           </Link>
         </ul>
       </div>
-      <div
-        onClick={toggleCart}
-        className="cart absolute cursor-pointer top-4 right-0 mx-5"
-      >
-        <AiOutlineShoppingCart className="text-2xl md:text-3xl" />
+      <div className="cart absolute cursor-pointer top-4 right-0 mx-5 flex">
+        <Link href="/login">
+          {" "}
+          <MdAccountCircle className="text-2xl md:text-3xl mx-2" />{" "}
+        </Link>
+        <AiOutlineShoppingCart
+          onClick={toggleCart}
+          className="text-2xl md:text-3xl"
+        />
       </div>
       {/* <div className="relative top-0 right-0"> */}
       <div
         ref={ref}
-        className="w-72 h-full sideCart z-10 absolute top-0 right-0 bg-pink-100 px-8 py-10 transform transition-transform translate-x-full"
+        className={`w-72 h-[100vh] sideCart z-10 absolute top-0 right-0 bg-pink-100 px-8 py-10 transform transition-transform ${
+          Object.keys(cart).length !== 0 ? "translate-x-0" : "translate-x-full"
+        } `}
       >
         <h2 className="font-bold text-xl text-center">Shopping Cart</h2>
         <span
@@ -115,11 +122,14 @@ const Navbar = ({ addToCart, removeFromCart, cart, subTotal, clearCart }) => {
             );
           })}
         </ol>
+        <div className="font-bold my-2">Subtotal : ₹ {subTotal}</div>
         <div className="flex">
-          <button className="flex mr-2  text-white bg-indigo-500 border-0 py-2 px-2 focus:outline-none hover:bg-indigo-600 rounded text-sm">
-            <BsFillBagCheckFill className="m-1" />
-            Checkout
-          </button>
+          <Link href="/checkout">
+            <button className="flex mr-2  text-white bg-indigo-500 border-0 py-2 px-2 focus:outline-none hover:bg-indigo-600 rounded text-sm">
+              <BsFillBagCheckFill className="m-1" />
+              Checkout
+            </button>
+          </Link>
           <button
             onClick={clearCart}
             className="flex mr-2  text-white bg-indigo-500 border-0 py-2 px-2 focus:outline-none hover:bg-indigo-600 rounded text-sm"

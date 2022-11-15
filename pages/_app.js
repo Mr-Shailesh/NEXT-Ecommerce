@@ -11,11 +11,13 @@ function MyApp({ Component, pageProps }) {
     try {
       if (localStorage.getItem("cart")) {
         setCart(JSON.parse(localStorage.getItem("cart")));
+        saveCart(JSON.parse(localStorage.getItem("cart")));
       }
     } catch (error) {
       console.error(error);
       localStorage.clear;
     }
+    // saveCart(cart);
   }, []);
 
   console.log("cart", cart);
@@ -61,6 +63,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Navbar
+        key={subTotal}
         cart={cart}
         addToCart={addToCart}
         removeFromCart={removeFromCart}
