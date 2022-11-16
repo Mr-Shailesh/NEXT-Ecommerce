@@ -62,7 +62,6 @@ const Navbar = ({ addToCart, removeFromCart, cart, subTotal, clearCart }) => {
           className="text-2xl md:text-3xl"
         />
       </div>
-      {/* <div className="relative top-0 right-0"> */}
       <div
         ref={ref}
         className={`w-72 h-[100vh] sideCart z-10 absolute top-0 right-0 bg-pink-100 px-8 py-10 transform transition-transform ${
@@ -138,7 +137,6 @@ const Navbar = ({ addToCart, removeFromCart, cart, subTotal, clearCart }) => {
           </button>
         </div>
       </div>
-      {/* </div> */}
     </div>
   );
 };

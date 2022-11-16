@@ -17,10 +17,7 @@ function MyApp({ Component, pageProps }) {
       console.error(error);
       localStorage.clear;
     }
-    // saveCart(cart);
   }, []);
-
-  console.log("cart", cart);
 
   const saveCart = (myCart) => {
     localStorage.setItem("cart", JSON.stringify(myCart));
