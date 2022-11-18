@@ -60,6 +60,7 @@ const order = () => {
             src="https://dummyimage.com/400x400"
             width={500}
             height={500}
+            priority
           />
         </div>
       </div>

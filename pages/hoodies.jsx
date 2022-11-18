@@ -30,6 +30,7 @@ const hoodies = ({ products }) => {
                         src={products[item].img}
                         height={500}
                         width={500}
+                        priority
                       />
                     </div>
                   </Link>

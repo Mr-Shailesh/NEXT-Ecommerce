@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "crypto-js": "^4.1.1",
     "eslint": "8.27.0",
     "eslint-config-next": "13.0.2",
     "init": "^0.1.2",

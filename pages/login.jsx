@@ -1,9 +1,77 @@
+import React, { useState } from "react";
 import Link from "next/link";
-import React from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Router from "next/router";
 
 const login = () => {
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+
+  const changeHandler = (e) => {
+    if (e.target.name === "email") {
+      setEmail(e.target.value);
+    }
+    if (e.target.name === "password") {
+      setPassword(e.target.value);
+    }
+  };
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    const data = { email, password };
+    let res = await fetch("http://localhost:4500/api/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+    let response = await res.json();
+
+    if (response.success) {
+      toast.success("You are successfully logged in", {
+        position: "top-left",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      setEmail("");
+      setPassword("");
+      setTimeout(() => {
+        Router.push("http://localhost:4500");
+      }, 1000);
+    } else {
+      toast.error(response.error, {
+        position: "top-left",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      setPassword("");
+    }
+  };
+
   return (
     <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <ToastContainer
+        position="top-left"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <div className="w-full max-w-md space-y-8">
         <div>
           <img
@@ -12,7 +80,7 @@ const login = () => {
             alt="Your Company"
           />
           <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
-            Sign in to your account
+            Login to your account
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
             Or
@@ -24,15 +92,17 @@ const login = () => {
             </Link>
           </p>
         </div>
-        <form className="mt-8 space-y-6" action="#" method="POST">
+        <form className="mt-8 space-y-6" onSubmit={submitHandler} method="POST">
           <input type="hidden" name="remember" value="true" />
           <div className="-space-y-px rounded-md shadow-sm">
             <div>
-              <label htmlFor="email-address" className="sr-only">
+              <label htmlFor="email" className="sr-only">
                 Email address
               </label>
               <input
-                id="email-address"
+                onChange={changeHandler}
+                value={email}
+                id="email"
                 name="email"
                 type="email"
                 autoComplete="email"
@@ -46,6 +116,8 @@ const login = () => {
                 Password
               </label>
               <input
+                value={password}
+                onChange={changeHandler}
                 id="password"
                 name="password"
                 type="password"
@@ -75,7 +147,6 @@ const login = () => {
 
             <div className="text-sm">
               <Link href="/forget">
-                {" "}
                 <span className="font-medium text-indigo-600 hover:text-indigo-500">
                   Forgot your password?
                 </span>
@@ -103,7 +174,7 @@ const login = () => {
                   />
                 </svg>
               </span>
-              Sign in
+              Login
             </button>
           </div>
         </form>

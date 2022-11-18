@@ -75,6 +75,7 @@ const slug = ({ buyNow, addToCart, product, variants }) => {
             src={product.img}
             height={500}
             width={500}
+            priority
           />
           <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
             <h2 className="text-sm title-font text-gray-500 tracking-widest">
@@ -409,7 +410,7 @@ export const getServerSideProps = async (ctx) => {
     title: product.title,
     category: product.category,
   });
-  console.log("variants", variants);
+
   let colorSizeSlug = {};
   for (let item of variants) {
     if (Object.keys(colorSizeSlug).includes(item.color)) {
