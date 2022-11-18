@@ -25,7 +25,11 @@ const Footer = () => {
                 <span className="ml-3 text-xl">CoverWala</span>
               </div>
               <p className="mt-2 text-sm text-gray-500">
-                Air plant banjo lyft occupy retro adaptogen indego
+                Keep the phone safe with CoverWala
+              </p>
+              <p className=" text-sm text-gray-500">
+                {" "}
+                Premium Back-Covers, T-Shirts and apparals
               </p>
             </Link>
           </div>
@@ -36,24 +40,30 @@ const Footer = () => {
               </h2>
               <nav className="list-none mb-10">
                 <li>
-                  <a className="text-gray-600 hover:text-gray-800">
-                    First Link
-                  </a>
+                  <Link legacyBehavior href="/covers">
+                    <a className="text-gray-600 hover:text-gray-800">
+                      BackCovers
+                    </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className="text-gray-600 hover:text-gray-800">
-                    Second Link
-                  </a>
+                  <Link legacyBehavior href="/tshirts">
+                    <a className="text-gray-600 hover:text-gray-800">
+                      T-shirts
+                    </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className="text-gray-600 hover:text-gray-800">
-                    Third Link
-                  </a>
+                  <Link legacyBehavior href="/skin-covers">
+                    <a className="text-gray-600 hover:text-gray-800">
+                      Skin-Covers
+                    </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className="text-gray-600 hover:text-gray-800">
-                    Fourth Link
-                  </a>
+                  <Link legacyBehavior href="/hoodies">
+                    <a className="text-gray-600 hover:text-gray-800">Hoodies</a>
+                  </Link>
                 </li>
               </nav>
             </div>
@@ -63,24 +73,25 @@ const Footer = () => {
               </h2>
               <nav className="list-none mb-10">
                 <li>
-                  <a className="text-gray-600 hover:text-gray-800">
-                    First Link
-                  </a>
+                  <Link legacyBehavior href="/contact">
+                    <a className="text-gray-600 hover:text-gray-800">
+                      Contact Us
+                    </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className="text-gray-600 hover:text-gray-800">
-                    Second Link
-                  </a>
+                  <Link legacyBehavior href="/about">
+                    <a className="text-gray-600 hover:text-gray-800">
+                      About Us
+                    </a>
+                  </Link>
                 </li>
                 <li>
-                  <a className="text-gray-600 hover:text-gray-800">
-                    Third Link
-                  </a>
-                </li>
-                <li>
-                  <a className="text-gray-600 hover:text-gray-800">
-                    Fourth Link
-                  </a>
+                  <Link legacyBehavior href="/returnpolicy">
+                    <a className="text-gray-600 hover:text-gray-800">
+                      Return Policy
+                    </a>
+                  </Link>
                 </li>
               </nav>
             </div>
@@ -91,22 +102,12 @@ const Footer = () => {
               <nav className="list-none mb-10">
                 <li>
                   <a className="text-gray-600 hover:text-gray-800">
-                    First Link
+                    Privacy Policy
                   </a>
                 </li>
                 <li>
                   <a className="text-gray-600 hover:text-gray-800">
-                    Second Link
-                  </a>
-                </li>
-                <li>
-                  <a className="text-gray-600 hover:text-gray-800">
-                    Third Link
-                  </a>
-                </li>
-                <li>
-                  <a className="text-gray-600 hover:text-gray-800">
-                    Fourth Link
+                    Terms & Conditions
                   </a>
                 </li>
               </nav>
@@ -119,15 +120,7 @@ const Footer = () => {
         <div className="bg-gray-100">
           <div className="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
             <p className="text-gray-500 text-sm text-center sm:text-left">
-              © 2020 CoverWala —
-              <a
-                href="#"
-                rel="noopener noreferrer"
-                className="text-gray-600 ml-1"
-                target="_blank"
-              >
-                @knyttneve
-              </a>
+              © 2022 CoverWala — All Rights Reserved
             </p>
             <span className="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
               <a className="text-gray-500">

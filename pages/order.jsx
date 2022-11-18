@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 const order = () => {
@@ -53,10 +54,12 @@ const order = () => {
               </div>
             </div>
           </div>
-          <img
+          <Image
             alt="ecommerce"
             className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
             src="https://dummyimage.com/400x400"
+            width={500}
+            height={500}
           />
         </div>
       </div>

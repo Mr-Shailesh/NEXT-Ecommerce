@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
@@ -6,6 +7,7 @@ import "../styles/globals.css";
 function MyApp({ Component, pageProps }) {
   const [cart, setCart] = useState({});
   const [subTotal, setSubTotal] = useState(0);
+  const router = useRouter();
 
   useEffect(() => {
     try {
@@ -57,6 +59,15 @@ function MyApp({ Component, pageProps }) {
     saveCart(newCart);
   };
 
+  const buyNow = (itemCode, qty, price, name, size, variant) => {
+    let newCart = { itemCode: { qty: 1, price, name, size, variant } };
+
+    setCart(newCart);
+    saveCart(newCart);
+
+    router.push("/checkout");
+  };
+
   return (
     <>
       <Navbar
@@ -68,6 +79,7 @@ function MyApp({ Component, pageProps }) {
         subTotal={subTotal}
       />
       <Component
+        buyNow={buyNow}
         cart={cart}
         addToCart={addToCart}
         removeFromCart={removeFromCart}

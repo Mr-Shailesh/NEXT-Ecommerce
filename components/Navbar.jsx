@@ -42,13 +42,16 @@ const Navbar = ({ addToCart, removeFromCart, cart, subTotal, clearCart }) => {
       <div className="nav">
         <ul className="flex items-center space-x-6 font-bold md:text-md ">
           <Link href="/covers">
-            <li>Cover</li>
+            <li className=" hover:text-indigo-600">Cover</li>
           </Link>
           <Link href="/tshirts">
-            <li>Tshirt</li>
+            <li className=" hover:text-indigo-600">Tshirt</li>
           </Link>
           <Link href="/skin-covers">
-            <li>Skin-Cover</li>
+            <li className=" hover:text-indigo-600">Skin-Cover</li>
+          </Link>
+          <Link href="/hoodies">
+            <li className=" hover:text-indigo-600">Hoodies</li>
           </Link>
         </ul>
       </div>
@@ -64,11 +67,11 @@ const Navbar = ({ addToCart, removeFromCart, cart, subTotal, clearCart }) => {
       </div>
       <div
         ref={ref}
-        className={`w-72 h-[100vh] sideCart z-10 absolute top-0 right-0 bg-pink-100 px-8 py-10 transform transition-transform ${
+        className={`w-72 h-[100vh] overflow-y-scroll sideCart z-10 absolute top-0 right-0 bg-indigo-100 px-8 py-10 transform transition-transform ${
           Object.keys(cart).length !== 0 ? "translate-x-0" : "translate-x-full"
         } `}
       >
-        <h2 className="font-bold text-xl text-center">Shopping Cart</h2>
+        <h2 className="font-bold  text-xl text-center">Shopping Cart</h2>
         <span
           onClick={toggleCart}
           className="absolute top-5 right-2 cursor-pointer text-2xl"
@@ -84,7 +87,7 @@ const Navbar = ({ addToCart, removeFromCart, cart, subTotal, clearCart }) => {
               <li key={k}>
                 <div className="item flex my-5">
                   <div className="break-words w-2/3 font-semibold">
-                    {cart[k].name}
+                    {cart[k].name}({cart[k].size}/{cart[k].variant})
                   </div>
                   <div className="flex items-center font-semibold justify-center w-1/3 text-lg">
                     <AiOutlineMinusCircle

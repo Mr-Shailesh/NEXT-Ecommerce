@@ -4,7 +4,7 @@ import Product from "../models/Product";
 import mongoose from "mongoose";
 import Image from "next/image";
 
-const tshirt = ({ products }) => {
+const hoodies = ({ products }) => {
   return (
     <div>
       <section className="text-gray-600 body-font">
@@ -12,7 +12,7 @@ const tshirt = ({ products }) => {
           <div className="flex flex-wrap -m-4 justify-center">
             {Object.keys(products).length === 0 && (
               <p>
-                Sorry, All the T-Shirts are currently out of stock. New stock
+                Sorry, All the Hoodies are currently out of stock. New stock
                 coming soon. Stay Tuned !
               </p>
             )}
@@ -113,37 +113,37 @@ export const getServerSideProps = async (ctx) => {
     await mongoose.connect(process.env.MONGO_URI);
   }
 
-  let products = await Product.find({ category: "Tshirt" });
+  let products = await Product.find({ category: "Hoodies" });
 
-  let tshirt = {};
+  let hoodies = {};
   for (let item of products) {
-    if (item.title in tshirt) {
+    if (item.title in hoodies) {
       if (
-        !tshirt[item.title].color.includes(item.color) &&
+        !hoodies[item.title].color.includes(item.color) &&
         item.availableQty > 0
       ) {
-        tshirt[item.title].color.push(item.color);
+        hoodies[item.title].color.push(item.color);
       }
       if (
-        !tshirt[item.title].size.includes(item.size) &&
+        !hoodies[item.title].size.includes(item.size) &&
         item.availableQty > 0
       ) {
-        tshirt[item.title].size.push(item.size);
+        hoodies[item.title].size.push(item.size);
       }
     } else {
-      tshirt[item.title] = JSON.parse(JSON.stringify(item));
+      hoodies[item.title] = JSON.parse(JSON.stringify(item));
       if (item.availableQty > 0) {
-        tshirt[item.title].color = [item.color];
-        tshirt[item.title].size = [item.size];
+        hoodies[item.title].color = [item.color];
+        hoodies[item.title].size = [item.size];
       }
     }
   }
 
   return {
     props: {
-      products: JSON.parse(JSON.stringify(tshirt)),
+      products: JSON.parse(JSON.stringify(hoodies)),
     },
   };
 };
 
-export default tshirt;
+export default hoodies;

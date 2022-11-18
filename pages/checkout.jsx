@@ -113,7 +113,7 @@ const checkout = ({ cart, subTotal, addToCart, removeFromCart }) => {
       </div>
 
       <h2 className="font-bold text-xl">2. Review Cart Items </h2>
-      <div className=" sideCart z-10  bg-pink-100 p-6 m-2 ">
+      <div className=" sideCart z-10  bg-indigo-100 p-6 m-2 ">
         <ol className="list-decimal font-semibold">
           {Object.keys(cart).length === 0 && (
             <div className="my-4 font-semibold ">No Items Found.</div>
@@ -122,7 +122,9 @@ const checkout = ({ cart, subTotal, addToCart, removeFromCart }) => {
             return (
               <li key={k}>
                 <div className="item flex my-5">
-                  <div className=" font-semibold">{cart[k].name}</div>
+                  <div className=" font-semibold">
+                    {cart[k].name}({cart[k].size}/{cart[k].variant}){" "}
+                  </div>
                   <div className="flex items-center font-semibold justify-center w-1/3 text-lg">
                     <AiOutlineMinusCircle
                       className="cursor-pointer"

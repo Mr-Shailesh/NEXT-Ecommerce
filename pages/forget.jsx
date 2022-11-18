@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+// import Image from "next/image";
 
 const forget = () => {
   return (
@@ -10,6 +11,8 @@ const forget = () => {
             className="mx-auto h-12 w-auto"
             src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
             alt="Your Company"
+            // width={500}
+            // height={500}
           />
           <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
             Forgot Password
