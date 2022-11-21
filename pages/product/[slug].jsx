@@ -268,7 +268,7 @@ const slug = ({ buyNow, addToCart, product, variants }) => {
                     <button
                       onClick={() => refreshVariants(size, "pink")}
                       className={`border-2  ml-1 bg-pink-500 rounded-full w-6 h-6 focus:outline-none ${
-                        color === "white" ? "border-black" : "border-gray-300"
+                        color === "pink" ? "border-black" : "border-gray-300"
                       }`}
                     ></button>
                   )}

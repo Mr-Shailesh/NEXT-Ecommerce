@@ -1,12 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Router from "next/router";
 
 const login = () => {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      Router.push("/");
+    }
+  }, []);
 
   const changeHandler = (e) => {
     if (e.target.name === "email") {
@@ -26,8 +32,10 @@ const login = () => {
       body: JSON.stringify(data),
     });
     let response = await res.json();
+    console.log(response);
 
     if (response.success) {
+      localStorage.setItem("token", response.token);
       toast.success("You are successfully logged in", {
         position: "top-left",
         autoClose: 3000,
@@ -41,7 +49,7 @@ const login = () => {
       setEmail("");
       setPassword("");
       setTimeout(() => {
-        Router.push("http://localhost:4500");
+        Router.push("/");
       }, 1000);
     } else {
       toast.error(response.error, {
@@ -93,7 +101,7 @@ const login = () => {
           </p>
         </div>
         <form className="mt-8 space-y-6" onSubmit={submitHandler} method="POST">
-          <input type="hidden" name="remember" value="true" />
+          {/* <input type="hidden" name="remember" value="true" /> */}
           <div className="-space-y-px rounded-md shadow-sm">
             <div>
               <label htmlFor="email" className="sr-only">
@@ -130,7 +138,7 @@ const login = () => {
           </div>
 
           <div className="flex items-center justify-between">
-            <div className="flex items-center">
+            {/* <div className="flex items-center">
               <input
                 id="remember-me"
                 name="remember-me"
@@ -143,7 +151,7 @@ const login = () => {
               >
                 Remember me
               </label>
-            </div>
+            </div> */}
 
             <div className="text-sm">
               <Link href="/forget">
