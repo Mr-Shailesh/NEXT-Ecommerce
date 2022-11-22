@@ -8,6 +8,8 @@ import {
 } from "react-icons/ai";
 import { BsFillBagCheckFill } from "react-icons/bs";
 import { MdAccountCircle } from "react-icons/md";
+import Logo from "../svg/Logo";
+import Image from "next/image";
 
 const Navbar = ({
   logout,
@@ -43,33 +45,32 @@ const Navbar = ({
     <div className="flex flex-col md:flex-row md:justify-start justify-center items-center py-2 shadow-md sticky top-0 bg-white z-10">
       <div className="logo mr-auto md:mx-5 ml-7">
         <Link href="/">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            className="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
-            viewBox="0 0 24 24"
-          >
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-          </svg>
+          {/* <Logo /> */}
+          {/* <img height= src="/Logo.png" alt="" /> */}
+          {/* <Image /> */}
+          <Image
+            className="h-auto w-auto"
+            src="/Logo.png"
+            alt=""
+            width={60}
+            height={100}
+            priority
+          />
         </Link>
       </div>
       <div className="nav">
         <ul className="flex items-center space-x-6 font-bold md:text-md ">
           <Link href="/covers">
-            <li className=" hover:text-indigo-600">Cover</li>
+            <li className=" hover:text-hover">Cover</li>
           </Link>
           <Link href="/tshirts">
-            <li className=" hover:text-indigo-600">Tshirt</li>
+            <li className=" hover:text-hover">Tshirt</li>
           </Link>
           <Link href="/skin-covers">
-            <li className=" hover:text-indigo-600">Skin-Cover</li>
+            <li className=" hover:text-hover">Skin-Cover</li>
           </Link>
           <Link href="/hoodies">
-            <li className=" hover:text-indigo-600">Hoodies</li>
+            <li className=" hover:text-hover">Hoodies</li>
           </Link>
         </ul>
       </div>
@@ -77,24 +78,24 @@ const Navbar = ({
         {/* <MdAccountCircle className="text-2xl md:text-3xl mx-2" /> */}
 
         {dropdown && (
-          <div className="absolute right-8 top-8 py-4 bg-indigo-100 shadow-lg border rounded-md px-5 w-32">
+          <div className="absolute right-8 top-8 py-4 bg-logo-100 shadow-lg border rounded-md px-5 w-32">
             <ul>
               <Link href="/myaccount">
                 {" "}
-                <li className="py-1 hover:text-indigo-700 text-sm font-bold">
+                <li className="py-1 hover:text-hover text-sm font-bold">
                   My Account
                 </li>
               </Link>
               <Link href="/orders">
                 {" "}
-                <li className="py-1 hover:text-indigo-700 text-sm font-bold">
+                <li className="py-1 hover:text-hover text-sm font-bold">
                   Orders
                 </li>
               </Link>
 
               <li
                 onClick={logout}
-                className="py-1 hover:text-indigo-700 text-sm font-bold"
+                className="py-1 hover:text-hover text-sm font-bold"
               >
                 Logout
               </li>
@@ -105,13 +106,13 @@ const Navbar = ({
         {user.value && (
           <MdAccountCircle
             onClick={toggleDropdown}
-            className="text-2xl md:text-3xl mx-2"
+            className="text-2xl md:text-3xl mx-2 text-logo"
           />
         )}
 
         {!user.value && (
           <Link href="/login">
-            <button className="bg-indigo-600 px-2 py-1 mx-2 rounded-md text-sm text-white">
+            <button className="bg-hover hover:bg-logo px-2 py-1 mx-2 rounded-md text-sm text-white">
               Login
             </button>
           </Link>
@@ -124,7 +125,7 @@ const Navbar = ({
       </div>
       <div
         ref={ref}
-        className={`w-72 h-[100vh] overflow-y-scroll sideCart z-10 absolute top-0 right-0 bg-indigo-100 px-8 py-10 transform transition-transform ${
+        className={`w-72 h-[100vh] overflow-y-scroll sideCart z-10 absolute top-0 right-0 bg-logo-100 px-8 py-10 transform transition-transform ${
           Object.keys(cart).length !== 0 ? "translate-x-0" : "translate-x-full"
         } `}
       >
@@ -184,14 +185,14 @@ const Navbar = ({
         <div className="font-bold my-2">Subtotal : ₹ {subTotal}</div>
         <div className="flex">
           <Link href="/checkout">
-            <button className="flex mr-2  text-white bg-indigo-500 border-0 py-2 px-2 focus:outline-none hover:bg-indigo-600 rounded text-sm">
+            <button className="flex mr-2  text-white bg-hover border-0 py-2 px-2 focus:outline-none hover:bg-logo rounded text-sm">
               <BsFillBagCheckFill className="m-1" />
               Checkout
             </button>
           </Link>
           <button
             onClick={clearCart}
-            className="flex mr-2  text-white bg-indigo-500 border-0 py-2 px-2 focus:outline-none hover:bg-indigo-600 rounded text-sm"
+            className="flex mr-2  text-white bg-hover border-0 py-2 px-2 focus:outline-none hover:bg-logo rounded text-sm"
           >
             Clear Cart
           </button>

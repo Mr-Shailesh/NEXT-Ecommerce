@@ -102,6 +102,7 @@ function MyApp({ Component, pageProps }) {
       progress: undefined,
       theme: "light",
     });
+    router.push("/");
   };
 
   return (

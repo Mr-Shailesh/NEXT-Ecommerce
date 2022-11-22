@@ -86,7 +86,7 @@ const cover = ({ products }) => {
                         <button className="border-2 border-gray-300 ml-1 bg-rose-900 rounded-full w-6 h-6 focus:outline-none"></button>
                       )}
                       {products[item].color.includes("cyan") && (
-                        <button className="border-2 border-gray-300 ml-1 bg-cyan-700 rounded-full w-6 h-6 focus:outline-none"></button>
+                        <button className="border-2 border-gray-300 ml-1 bg-cyan-500 rounded-full w-6 h-6 focus:outline-none"></button>
                       )}
                       {products[item].color.includes("pink") && (
                         <button className="border-2 border-gray-300 ml-1 bg-pink-500 rounded-full w-6 h-6 focus:outline-none"></button>

@@ -3,11 +3,12 @@ import Link from "next/link";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Router from "next/router";
-
+import LockIcon from "../svg/LockIcon";
+import Image from "next/image";
 const signup = () => {
-  const [name, setName] = useState();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -30,7 +31,7 @@ const signup = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     const data = { name, email, password };
-    let res = await fetch("http://localhost:4500/api/signup", {
+    let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/signup`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
@@ -72,18 +73,26 @@ const signup = () => {
       />
       <div className="w-full max-w-md space-y-8">
         <div>
-          <img
+          <Image
+            className="mx-auto h-auto  w-auto"
+            src="/Logo.png"
+            alt=""
+            width={80}
+            height={100}
+            priority
+          />
+          {/* <img
             className="mx-auto h-12 w-auto"
             src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
             alt="Your Company"
-          />
+          /> */}
           <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
             Sign up for an account
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
             Or
             <Link href="/login">
-              <span className="font-medium text-indigo-600 hover:text-indigo-500">
+              <span className="font-medium text-hover hover:text-logo">
                 {" "}
                 Login
               </span>
@@ -105,7 +114,7 @@ const signup = () => {
                 type="text"
                 autoComplete="name"
                 required
-                className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-hover focus:outline-none focus:ring-hover sm:text-sm"
                 placeholder="Your Name"
               />
             </div>
@@ -121,7 +130,7 @@ const signup = () => {
                 type="email"
                 autoComplete="email"
                 required
-                className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-hover focus:outline-none focus:ring-hover sm:text-sm"
                 placeholder="Email address"
               />
             </div>
@@ -137,7 +146,7 @@ const signup = () => {
                 type="password"
                 autoComplete="current-password"
                 required
-                className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-hover focus:outline-none focus:ring-hover sm:text-sm"
                 placeholder="Password"
               />
             </div>
@@ -146,22 +155,10 @@ const signup = () => {
           <div>
             <button
               type="submit"
-              className="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+              className="group relative flex w-full justify-center rounded-md border border-transparent bg-hover py-2 px-4 text-sm font-medium text-white hover:bg-logo focus:outline-none focus:ring-2 focus:ring-hover focus:ring-offset-2"
             >
               <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-                <svg
-                  className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z"
-                    clipRule="evenodd"
-                  />
-                </svg>
+                <LockIcon />
               </span>
               Sign up
             </button>

@@ -48,7 +48,7 @@ const order = () => {
                 SubTotal ₹58.00
               </span>
               <div className="my-6">
-                <button className="flex mx-0 text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
+                <button className="flex mx-0 text-white bg-hover border-0 py-2 px-6 focus:outline-none hover:bg-logo rounded">
                   Track Order
                 </button>
               </div>
